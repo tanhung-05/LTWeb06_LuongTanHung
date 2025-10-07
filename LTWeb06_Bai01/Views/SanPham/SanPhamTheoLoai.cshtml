@@ -1,0 +1,18 @@
+﻿@model IEnumerable<LTWeb06_Bai01.Models.SanPham>
+
+@{
+    ViewBag.Title = "SanPhamTheoLoai";
+}
+
+<div class="row w-75">
+    @foreach (var item in Model)
+    {
+        <div class="col-4">
+            <div class="text-center p-3" style="border: 1px solid black">
+                <img src="@Url.Content("~/Content/Images/" + item.Hinh)" style="width:100px; height:100px"/>
+                <div>Giá: @item.Gia</div>
+                @Html.ActionLink("Chi tiết", "SanPhamTheoId", "SanPham", new {id = item.MaSanPham.Trim()}, null)
+            </div>
+        </div>
+    }
+</div>

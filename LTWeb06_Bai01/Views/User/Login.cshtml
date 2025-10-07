@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = ViewBag.Error;
+}
+<style>
+    .btn-login{
+        margin-left: 300px;
+    }
+</style>
+
+<form method="post" action="/User/Login">
+    <div style="margin-left: 300px">ĐĂNG NHẬP</div>
+    <label class="form-label" style="margin-right: 200px">Số điện thoại</label>
+    <input type="text" name="SoDienThoai" /><br />
+    <label class="form-label" style="margin-right: 227px">Mật khẩu</label>
+    <input type="password" name="MatKhau" /><br />
+    <button type="submit" class="btn btn-success btn-login">Đăng nhập</button>
+    <input type="hidden" name="returnUrl" value="@ViewBag.returnUrl"/>
+</form>
+

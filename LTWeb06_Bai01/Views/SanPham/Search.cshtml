@@ -1,0 +1,48 @@
+﻿@model IEnumerable<LTWeb06_Bai01.Models.SanPham>
+
+<h2>Tìm kiếm sản phẩm</h2>
+
+<form method="get" action="/SanPham/Search">
+    <label>Loại sản phẩm:</label>
+    <select name="maLoai">
+        @foreach (var item in (List<SelectListItem>)ViewBag.LoaiList)
+        {
+            <option value="@item.Value" @(item.Selected ? "selected" : "")>@item.Text</option>
+        }
+    </select>
+
+    <label>Từ giá:</label>
+    <input type="number" name="giaTu" value="@Request["giaTu"]" />
+
+    <label>Đến giá:</label>
+    <input type="number" name="giaDen" value="@Request["giaDen"]" />
+
+    <button type="submit">Tìm kiếm</button>
+</form>
+
+<hr />
+
+@if (Model != null && Model.Any())
+{
+    <table class="table table-striped">
+        <tr>
+            <th>Mã SP</th>
+            <th>Tên SP</th>
+            <th>Loại</th>
+            <th>Giá</th>
+        </tr>
+        @foreach (var sp in Model)
+        {
+            <tr>
+                <td>@sp.MaSanPham</td>
+                <td>@sp.TenSP</td>
+                <td>@sp.MaL</td>
+                <td>@sp.Gia.ToString("N0") đ</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>Không có sản phẩm nào phù hợp.</p>
+}

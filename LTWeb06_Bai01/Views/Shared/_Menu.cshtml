@@ -1,0 +1,8 @@
+﻿@model IEnumerable<LTWeb06_Bai01.Models.Loai>
+
+<div>
+    @foreach(var item in Model)
+            {
+                <div>@Html.ActionLink(@item.TenLoai, "SanPhamTheoLoai", "SanPham", new { id = item.MaLoai.Trim()}, new {@class = "nav-link"})</div>
+            }
+</div>
